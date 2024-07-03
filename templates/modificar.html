@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contacto</title>
+    <link rel="shortcut icon" href="../ExamenIntegradorFrontEnd-Com24170-Grupo11/img/favicon.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../ExamenIntegradorFrontEnd-Com24170-Grupo11/css/estilos_contacto.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+  </head>
+
+
+    <!-- Contenedor Principal -->
+    <div class="contenedor">
+
+      <!-- Encabezado -->
+      <header class="encabezado">
+        <div class="encabezado-izq">
+          <img src="../ExamenIntegradorFrontEnd-Com24170-Grupo11/img/AvionPapel.jpg" alt="Avión de papel" />
+        </div>
+        <div class="encabezado-centro">
+          <img src="../ExamenIntegradorFrontEnd-Com24170-Grupo11/img/TravelTour.jpg" alt="Travel Tour" />
+        </div>
+        <div class="encabezado-der">
+          <img src="../ExamenIntegradorFrontEnd-Com24170-Grupo11/img/AgenciaDeViajes.jpg" alt="Agencia de viajes" />
+        </div>
+      </header>
+
+      <!-- Barra de Navegación -->
+      <nav class="menu">
+        <ul>
+          <li><a href="../ExamenIntegradorFrontEnd-Com24170-Grupo11/index.html">Inicio</a></li>
+          <li><a href="../ExamenIntegradorFrontEnd-Com24170-Grupo11/nosotros.html">¿Quiénes somos?</a></li>
+          <li><a href="../ExamenIntegradorFrontEnd-Com24170-Grupo11/paquetes.html">Paquetes</a></li>
+          <li><a href="../ExamenIntegradorFrontEnd-Com24170-Grupo11/contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+
+    <h1>Modificar comentario</h1><br>
+
+    <!-- Contenedor principal que será controlado por JavaScript. Este contenedor tendrá dos formularios. -->
+    <div id="app">
+        <!-- Primer formulario: Selector de producto. LLama a la función obtenerProducto cuando se envíe el formulario -->
+        <form id="form-obtener-producto">
+            <label for="email">email:</label>
+            <input type="text" id="email" required><br>
+            <button type="submit">Modificar comentario</button> <a href="../ExamenIntegradorFrontEnd-Com24170-Grupo11/contacto.html">Menu contacto</a>
+        </form>
+
+        <!-- Segundo formulario: se muestra solo si mostrarDatosProducto es verdadero. Llama a la función guardarCambios -->
+        <div class="formulario">
+            <h1 id="formulario_titulo">Modifica tu comentario</h1>
+            <br />
+            <p id="formulario_subtitulo">
+              Completa los datos y envianos tu consulta:
+            </p>
+            <br />
+  
+            <form action="" name="formulario" method="get">
+              <!-- Formulario Nombre -->
+              <label class="formulario_label" for="">Nombre:</label>
+              <input
+                type="text"
+                name="nombre"
+                id="nombre"
+                maxlength="30"
+                placeholder="Ingrese su nombre..."
+                class="formulario_input"
+              />
+              <br /><br />
+              <!-- Formulario Apellido -->
+              <label class="formulario_label" for="">Apellido:</label>
+              <input
+                type="text"
+                name="apellido"
+                id="apellido"
+                maxlength="30"
+                placeholder="Ingrese su apellido..."
+                class="formulario_input"
+              />
+              <br /><br />
+              <!-- Formulario Email -->
+              <label class="formulario_label" for="">Email:</label>
+              <input
+                type="text"
+                name="email"
+                id="email"
+                maxlength="30"
+                placeholder="Ingrese su email..."
+                class="formulario_input"
+              />
+              <br /><br />
+              <!-- Formulario Radio -->
+              <div>
+                <label for="">Origen del viaje:</label>
+                <input type="radio" name="so" value="baires" /> Buenos Aires
+                <input type="radio" name="so" value="cordoba" /> Córdoba
+              </div>
+              <br />
+              <!-- Formulario Select -->
+              <label class="formulario_label" id="formulario_select" for=""
+                >Tipo de paquete:</label
+              >
+              <select
+                name="interes"
+                class="formulario_input"
+                id="formulario_select"
+              >
+                <option value="elegir">Elegir</option>
+                <option value="inclusive">All Inclusive</option>
+                <option value="playas">Playas</option>
+                <option value="exoticos">Exóticos</option>
+                <option value="invierno">Invierno</option>
+              </select>
+              <br />
+              <!-- Formulario TextArea -->
+              <label class="formulario_label" for="">Escriba su consulta:</label>
+              <textarea
+                name="textarea"
+                id="textarea"
+                cols="30"
+                rows="5"
+                class="formulario_input"
+                placeholder="Escriba aquí..."
+              ></textarea>
+              <br /><br />
+              <!-- Formulario Checkbox -->
+              <label for="" class="formulario_checkbox">
+                <input type="checkbox" name="terminos" id="terminos" />
+                Acepto los Términos y Condiciones
+              </label>
+              <!-- Mensaje Obligatorio -->
+              <p id="obligatorio">* Todos los campos son obligatorios.</p>
+              <br />
+              <!-- Formulario Botones -->
+              <div class="formulario_botones">
+                <input type="submit" id="b1" name="btn" value="Enviar" />
+                <input type="reset" id="reset" name="reset" value="Reset" />
+              </div>
+            </form>
+          </div>
+    <footer class="pie">
+        <div>
+          <p>Copyright © 2024 Travel Tour.</p>
+        </div>
+        <div class="iconos">
+          <a
+            href="https://www.facebook.com/TurismoNacionAR/?locale=es_LA"
+            target="_blank"
+            ><span class="fab fa-facebook" title="Ir a Facebook"></span
+          ></a>
+          <a
+            href="https://www.instagram.com/turismonacionar/?hl=es"
+            target="_blank"
+            ><span class="fab fa-instagram" title="Ir a Instagram"></span
+          ></a>
+          <a href="https://x.com/TurismoNacionAR" target="_blank"
+            ><span class="fab fa-twitter" title="Ir a Twitter"></span
+          ></a>
+          <a
+            href="https://www.youtube.com/channel/UC3m5QCp-mE8PpdaA1zUrTuA"
+            target="_blank"
+            ><span class="fab fa-youtube" title="Ir a Youtube"></span
+          ></a>
+        </div>
+      </footer>
+    </div>
+    <script>
+         const URL = "http://127.0.0.1:5000/"
+        // const URL = "https://juanpablocodo.pythonanywhere.com/"
+
+
+        // Al subir al servidor, deberá utilizarse la siguiente ruta. USUARIO debe ser reemplazado por el nombre de usuario de Pythonanywhere
+        //const URL = "https://USUARIO.pythonanywhere.com/"
+
+        // Variables de estado para controlar la visibilidad y los datos del formulario
+        let codigo = '';
+        let descripcion = '';
+        let cantidad = '';
+        let precio = '';
+        let proveedor = '';
+        let imagen_url = '';
+        let imagenSeleccionada = null;
+        let imagenUrlTemp = null;
+        let mostrarDatosProducto = false;
+
+        document.getElementById('form-obtener-producto').addEventListener('submit', obtenerProducto);
+        document.getElementById('form-guardar-cambios').addEventListener('submit', guardarCambios);
+        document.getElementById('nuevaImagen').addEventListener('change', seleccionarImagen);
+
+        // Se ejecuta cuando se envía el formulario de consulta. Realiza una solicitud GET a la API y obtiene los datos del producto correspondiente al código ingresado.
+        function obtenerProducto(event) {
+            event.preventDefault();
+            codigo = document.getElementById('codigo').value;
+            fetch(URL + 'productos/' + codigo)
+                .then(response => {
+                    if (response.ok) {
+                        return response.json()
+                    } else {
+                        throw new Error('Error al obtener los datos del producto.')
+                    }
+                })
+                .then(data => {
+                    descripcion = data.descripcion;
+                    cantidad = data.cantidad;
+                    precio = data.precio;
+                    proveedor = data.proveedor;
+                    imagen_url = data.imagen_url;
+                    mostrarDatosProducto = true; //Activa la vista del segundo formulario
+                    mostrarFormulario();
+                })
+                .catch(error => {
+                    alert('Código no encontrado.');
+                });
+        }
+
+        // Muestra el formulario con los datos del producto
+        function mostrarFormulario() {
+            if (mostrarDatosProducto) {
+                document.getElementById('descripcionModificar').value = descripcion;
+                document.getElementById('cantidadModificar').value = cantidad;
+                document.getElementById('precioModificar').value = precio;
+                document.getElementById('proveModificar').value = proveedor;
+
+                const imagenActual = document.getElementById('imagen-actual');
+                if (imagen_url && !imagenSeleccionada) { // Verifica si imagen_url no está vacía y no se ha seleccionado una imagen
+                    
+                     imagenActual.src = 'https://www.pythonanywhere.com/user/juanpablocodo/files/home/juanpablocodo/mysite/static/imagenes/' + imagen_url;                    
+			//Al subir al servidor, deberá utilizarse la siguiente ruta. USUARIO debe ser reemplazado por el nombre de usuario de Pythonanywhere
+                    //imagenActual.src = 'https://www.pythonanywhere.com/user/USUARIO/files/home/USUARIO/mysite/static/imagenes/' + imagen_url;
+                    imagenActual.style.display = 'block'; // Muestra la imagen actual
+                } else {
+                    imagenActual.style.display = 'none'; // Oculta la imagen si no hay URL
+                }
+
+                document.getElementById('datos-producto').style.display = 'block';
+            } else {
+                document.getElementById('datos-producto').style.display = 'none';
+            }
+        }
+
+        // Se activa cuando el usuario selecciona una imagen para cargar.
+        function seleccionarImagen(event) {
+            const file = event.target.files[0];
+            imagenSeleccionada = file;
+            imagenUrlTemp = URL.createObjectURL(file); // Crea una URL temporal para la vista previa
+
+            const imagenVistaPrevia = document.getElementById('imagen-vista-previa');
+            imagenVistaPrevia.src = imagenUrlTemp;
+            imagenVistaPrevia.style.display = 'block';
+        }
+
+        // Se usa para enviar los datos modificados del producto al servidor.
+        function guardarCambios(event) {
+            event.preventDefault();
+
+            const formData = new FormData();
+            formData.append('codigo', codigo);
+            formData.append('descripcion', document.getElementById('descripcionModificar').value);
+            formData.append('cantidad', document.getElementById('cantidadModificar').value);
+            formData.append('proveedor', document.getElementById('proveModificar').value);
+            formData.append('precio', document.getElementById('precioModificar').value);
+
+            // Si se ha seleccionado una imagen nueva, la añade al formData. 
+            if (imagenSeleccionada) {
+                formData.append('imagen', imagenSeleccionada, imagenSeleccionada.name);
+            }
+
+            fetch(URL + 'productos/' + codigo, {
+                method: 'PUT',
+                body: formData,
+            })
+                .then(response => {
+                    if (response.ok) {
+                        return response.json()
+                    } else {
+                        throw new Error('Error al guardar los cambios del producto.')
+                    }
+                })
+                .then(data => {
+                    alert('Producto actualizado correctamente.');
+                    limpiarFormulario();
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Error al actualizar el producto.');
+                });
+        }
+
+        // Restablece todas las variables relacionadas con el formulario a sus valores iniciales, lo que efectivamente "limpia" el formulario.
+        function limpiarFormulario() {
+            document.getElementById('codigo').value = '';
+            document.getElementById('descripcionModificar').value = '';
+            document.getElementById('cantidadModificar').value = '';
+            document.getElementById('precioModificar').value = '';
+            document.getElementById('proveModificar').value = '';
+            document.getElementById('nuevaImagen').value = '';
+
+            const imagenActual = document.getElementById('imagen-actual');
+            imagenActual.style.display = 'none';
+
+            const imagenVistaPrevia = document.getElementById('imagen-vista-previa');
+            imagenVistaPrevia.style.display = 'none';
+
+            codigo = '';
+            descripcion = '';
+            cantidad = '';
+            precio = '';
+            proveedor = '';
+            imagen_url = '';
+            imagenSeleccionada = null;
+            imagenUrlTemp = null;
+            mostrarDatosProducto = false;
+
+            document.getElementById('datos-producto').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
