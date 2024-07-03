@@ -88,11 +88,7 @@ class Contacto:
 # Cuerpo del programa
 #--------------------------------------------------------------------
 # Crear una instancia de la clase Catalogo
-contacto = Contacto(host='localhost', user='root', password='', database='miapp')
-
-# Carpeta para guardar las imagenes
-# ruta_destino = './static/imagenes/'
-ruta_destino = '/home/juanpablocodo/mysite/static/imagenes/'
+contacto = Contacto(host='rodamrtnz.mysql.pythonanywhere-services.com', user='rodamrtnz', password='TIF12345', database='rodamrtnz$miapp')
 
 @app.route("/comentarios", methods=["GET"])
 def listar_comentarios():
@@ -117,9 +113,9 @@ def agregar_comentario():
     paquete = request.form['paquete']  
     comentario = request.form['comentario']
 
-    nuevo_email = contacto.agregar_comentario(nombre, apellido, email, origen, paquete, comentario)
-    if nuevo_email:    
-        return jsonify({"mensaje": "Comentario agregado correctamente.", "email": nuevo_email}), 201
+    nuevo_comentario = contacto.agregar_comentario(nombre, apellido, email, origen, paquete, comentario)
+    if nuevo_comentario:    
+        return jsonify({"mensaje": "Comentario agregado correctamente.", "email": nuevo_comentario}), 201
     else:
         return jsonify({"mensaje": "Error al agregar el comentario."}), 500
 

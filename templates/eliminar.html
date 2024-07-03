@@ -87,8 +87,8 @@ Actualizaciones de las combinaciones de teclas … El jueves, 1 de agosto de 202
         </div>
       </footer>
     <script>
-         const URL = "http://127.0.0.1:5000/"
-        // const URL = "https://juanpablocodo.pythonanywhere.com/"
+         //const URL = "http://127.0.0.1:5000/"
+         const URL = "https://rodamrtnz..pythonanywhere.com/"
 
         
         // Obtiene el contenido del inventario
@@ -111,7 +111,7 @@ Actualizaciones de las combinaciones de teclas … El jueves, 1 de agosto de 202
                             <td>${comentario.origen}</td>
                             <td>${comentario.paquete}</td>
                             <td>${comentario.comentario}</td>
-                            <td><button onclick="eliminarProducto('${comentario.email}')">Eliminar</button></td>
+                            <td><button onclick="eliminarComentario('${comentario.email}')">Eliminar</button></td>
                         `;
                     });
                 })
