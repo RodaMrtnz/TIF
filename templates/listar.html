@@ -1,0 +1,120 @@
+Actualizaciones de las combinaciones de teclas … El jueves, 1 de agosto de 2024, se actualizarán las combinaciones de teclas de Drive para que puedas navegar con las primeras letras.Más información
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contacto</title>
+    <link rel="shortcut icon" href="../ExamenIntegradorFrontEnd-Com24170-Grupo11/img/favicon.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../ExamenIntegradorFrontEnd-Com24170-Grupo11/css/estilos_contacto.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+  </head>
+
+<body>
+    <div class="contenedor">
+
+        <!-- Encabezado -->
+        <header class="encabezado">
+          <div class="encabezado-izq">
+            <img src="../ExamenIntegradorFrontEnd-Com24170-Grupo11/img/AvionPapel.jpg" alt="Avión de papel" />
+          </div>
+          <div class="encabezado-centro">
+            <img src="../ExamenIntegradorFrontEnd-Com24170-Grupo11/img/TravelTour.jpg" alt="Travel Tour" />
+          </div>
+          <div class="encabezado-der">
+            <img src="../ExamenIntegradorFrontEnd-Com24170-Grupo11/img/AgenciaDeViajes.jpg" alt="Agencia de viajes" />
+          </div>
+        </header>
+  
+        <!-- Barra de Navegación -->
+        <nav class="menu">
+          <ul>
+            <li><a href="../ExamenIntegradorFrontEnd-Com24170-Grupo11/index.html">Inicio</a></li>
+            <li><a href="../ExamenIntegradorFrontEnd-Com24170-Grupo11/nosotros.html">¿Quiénes somos?</a></li>
+            <li><a href="../ExamenIntegradorFrontEnd-Com24170-Grupo11/paquetes.html">Paquetes</a></li>
+            <li><a href="../ExamenIntegradorFrontEnd-Com24170-Grupo11/contacto.html">Contacto</a></li>
+          </ul>
+        </nav>
+  
+    <h1>Listado de comentarios</h1><br>
+
+    <table> <!-- Se crea una tabla para mostrar los productos. -->
+        <thead> <!--Encabezado de la tabla con columnas para código, descripción, cantidad, precio y acciones.-->
+            <tr>
+                <th>nombre</th>
+                <th>apellido</th>
+                <th>email</th>
+                <th>origen</th>
+                <th>paquete</th>
+                <th>comentario</th>
+            </tr>
+        </thead>
+        <tbody id="tablaComentarios"> </tbody>
+    </table><br>
+
+    <div class="contenedor-centrado">
+        <a href="../ExamenIntegradorFrontEnd-Com24170-Grupo11/contacto.html">Menu contacto</a>
+    </div>
+    <script>
+         const URL = "http://127.0.0.1:5000/"
+        // const URL = "https://juanpablocodo.pythonanywhere.com/"
+
+
+        // Al subir al servidor, deberá utilizarse la siguiente ruta. USUARIO debe ser reemplazado por el nombre de usuario de Pythonanywhere
+        //const URL = "https://USUARIO.pythonanywhere.com/"
+        
+
+        // Realizamos la solicitud GET al servidor para obtener todos los productos.
+        fetch(URL + 'comentarios')
+            .then(function (response) {
+                if (response.ok) {
+                    //Si la respuesta es exitosa (response.ok), convierte el cuerpo de la respuesta de formato JSON a un objeto JavaScript y pasa estos datos a la siguiente promesa then.
+                    return response.json(); 
+            } else {
+                    // Si hubo un error, lanzar explícitamente una excepción para ser "catcheada" más adelante
+                    throw new Error('Error al obtener los comentarios.');
+                }
+            })
+
+            //Esta función maneja los datos convertidos del JSON.
+            .then(function (data) {
+                let tablaComentarios = document.getElementById('tablaComentarios'); //Selecciona el elemento del DOM donde se mostrarán los productos.
+
+                // Iteramos sobre cada producto y agregamos filas a la tabla
+                for (let comentario of data) {
+                    let fila = document.createElement('tr'); //Crea una nueva fila de tabla (<tr>) para cada producto.
+                    fila.innerHTML = '<td>' + comentario.email + '</td>' +
+                        '<td>' + comentario.nombre + '</td>' +
+                        '<td align="right">' + comentario.apellido + '</td>' +
+                        '<td align="right">' + comentario.email + '</td>' +
+                        '<td align="right">' + comentario.origen + '</td>' +
+                        '<td align="right">' + comentario.paquete + '</td>' +
+                        '<td align="right">' + comentario.comentario + '</td>' +
+                        
+                        
+                        //Al subir al servidor, deberá utilizarse la siguiente ruta. USUARIO debe ser reemplazado por el nombre de usuario de Pythonanywhere
+                        //'<td><img src=https://www.pythonanywhere.com/user/USUARIO/files/home/USUARIO/mysite/static/imagenes/' + producto.imagen_url +' alt="Imagen del producto" style="width: 100px;"></td>' + '<td align="right">' + producto.proveedor + '</td>';
+                    
+                    //Una vez que se crea la fila con el contenido del producto, se agrega a la tabla utilizando el método appendChild del elemento tablaProductos.
+                    tablaComentarios.appendChild(fila);
+                }
+            })
+
+            //Captura y maneja errores, mostrando una alerta en caso de error al obtener los productos.
+            .catch(function (error) {
+                // Código para manejar errores
+                alert('Error al obtener los comentarios.');
+            });
+    </script>
+</body>
+</html>

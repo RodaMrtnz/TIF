@@ -50,7 +50,7 @@
     <!-- Contenedor principal que será controlado por JavaScript. Este contenedor tendrá dos formularios. -->
     <div id="app">
         <!-- Primer formulario: Selector de producto. LLama a la función obtenerProducto cuando se envíe el formulario -->
-        <form id="form-obtener-producto">
+        <form id="form-obtener-comentario">
             <label for="email">email:</label>
             <input type="text" id="email" required><br>
             <button type="submit">Modificar comentario</button> <a href="../ExamenIntegradorFrontEnd-Com24170-Grupo11/contacto.html">Menu contacto</a>
@@ -102,8 +102,8 @@
               <!-- Formulario Radio -->
               <div>
                 <label for="">Origen del viaje:</label>
-                <input type="radio" name="so" value="baires" /> Buenos Aires
-                <input type="radio" name="so" value="cordoba" /> Córdoba
+                <input type="radio" name="so" id='origen' value="baires" /> Buenos Aires
+                <input type="radio" name="so" id='origen' value="cordoba" /> Córdoba
               </div>
               <br />
               <!-- Formulario Select -->
@@ -115,18 +115,18 @@
                 class="formulario_input"
                 id="formulario_select"
               >
-                <option value="elegir">Elegir</option>
-                <option value="inclusive">All Inclusive</option>
-                <option value="playas">Playas</option>
-                <option value="exoticos">Exóticos</option>
-                <option value="invierno">Invierno</option>
+                <option  value="elegir">Elegir</option>
+                <option id='paquete' value="inclusive">All Inclusive</option>
+                <option id='paquete' value="playas">Playas</option>
+                <option id='paquete' value="exoticos">Exóticos</option>
+                <option id='paquete' value="invierno">Invierno</option>
               </select>
               <br />
               <!-- Formulario TextArea -->
               <label class="formulario_label" for="">Escriba su consulta:</label>
               <textarea
                 name="textarea"
-                id="textarea"
+                id="comentario"
                 cols="30"
                 rows="5"
                 class="formulario_input"
@@ -143,7 +143,7 @@
               <br />
               <!-- Formulario Botones -->
               <div class="formulario_botones">
-                <input type="submit" id="b1" name="btn" value="Enviar" />
+                <input type="submit" id="b1" name="btn" value="Guardar cambios" />
                 <input type="reset" id="reset" name="reset" value="Reset" />
               </div>
             </form>
@@ -183,99 +183,69 @@
         //const URL = "https://USUARIO.pythonanywhere.com/"
 
         // Variables de estado para controlar la visibilidad y los datos del formulario
-        let codigo = '';
-        let descripcion = '';
-        let cantidad = '';
-        let precio = '';
-        let proveedor = '';
-        let imagen_url = '';
-        let imagenSeleccionada = null;
-        let imagenUrlTemp = null;
-        let mostrarDatosProducto = false;
+        let nombre = '';
+        let apellido = '';
+        let email = '';
+        let origen = '';
+        let paquete = '';
+        let comentario = '';
+        let mostrarDatosComentario = false;
 
-        document.getElementById('form-obtener-producto').addEventListener('submit', obtenerProducto);
+        document.getElementById('form-obtener-comentario').addEventListener('submit', obtenercomentario);
         document.getElementById('form-guardar-cambios').addEventListener('submit', guardarCambios);
-        document.getElementById('nuevaImagen').addEventListener('change', seleccionarImagen);
 
         // Se ejecuta cuando se envía el formulario de consulta. Realiza una solicitud GET a la API y obtiene los datos del producto correspondiente al código ingresado.
-        function obtenerProducto(event) {
+        function obtenerComentario(event) {
             event.preventDefault();
-            codigo = document.getElementById('codigo').value;
-            fetch(URL + 'productos/' + codigo)
+            email = document.getElementById('email').value;
+            fetch(URL + 'comentarios/' + email)
                 .then(response => {
                     if (response.ok) {
                         return response.json()
                     } else {
-                        throw new Error('Error al obtener los datos del producto.')
+                        throw new Error('Error al obtener los datos del comentario.')
                     }
                 })
                 .then(data => {
-                    descripcion = data.descripcion;
-                    cantidad = data.cantidad;
-                    precio = data.precio;
-                    proveedor = data.proveedor;
-                    imagen_url = data.imagen_url;
-                    mostrarDatosProducto = true; //Activa la vista del segundo formulario
+                    nombre = data.nombre;
+                    apellido = data.apellido;
+                    email = data.email;
+                    origen = data.origen;
+                    paquete = data.paquete;
+                    comentario = data.comentario;
+                    mostrarDatosComentario = true; //Activa la vista del segundo formulario
                     mostrarFormulario();
                 })
                 .catch(error => {
-                    alert('Código no encontrado.');
+                    alert('Email no encontrado.');
                 });
         }
 
         // Muestra el formulario con los datos del producto
         function mostrarFormulario() {
-            if (mostrarDatosProducto) {
-                document.getElementById('descripcionModificar').value = descripcion;
-                document.getElementById('cantidadModificar').value = cantidad;
-                document.getElementById('precioModificar').value = precio;
-                document.getElementById('proveModificar').value = proveedor;
-
-                const imagenActual = document.getElementById('imagen-actual');
-                if (imagen_url && !imagenSeleccionada) { // Verifica si imagen_url no está vacía y no se ha seleccionado una imagen
-                    
-                     imagenActual.src = 'https://www.pythonanywhere.com/user/juanpablocodo/files/home/juanpablocodo/mysite/static/imagenes/' + imagen_url;                    
-			//Al subir al servidor, deberá utilizarse la siguiente ruta. USUARIO debe ser reemplazado por el nombre de usuario de Pythonanywhere
-                    //imagenActual.src = 'https://www.pythonanywhere.com/user/USUARIO/files/home/USUARIO/mysite/static/imagenes/' + imagen_url;
-                    imagenActual.style.display = 'block'; // Muestra la imagen actual
-                } else {
-                    imagenActual.style.display = 'none'; // Oculta la imagen si no hay URL
-                }
-
-                document.getElementById('datos-producto').style.display = 'block';
-            } else {
-                document.getElementById('datos-producto').style.display = 'none';
+            if (mostrarDatosComentario) {
+                document.getElementById('nombre').value = nombre;
+                document.getElementById('apellido').value = apellido;
+                document.getElementById('email').value = email;
+                document.getElementById('origen').value = origen;
+                document.getElementById('paquete').value = paquete;
+                document.getElementById('comentario').value = comentario;
             }
-        }
-
-        // Se activa cuando el usuario selecciona una imagen para cargar.
-        function seleccionarImagen(event) {
-            const file = event.target.files[0];
-            imagenSeleccionada = file;
-            imagenUrlTemp = URL.createObjectURL(file); // Crea una URL temporal para la vista previa
-
-            const imagenVistaPrevia = document.getElementById('imagen-vista-previa');
-            imagenVistaPrevia.src = imagenUrlTemp;
-            imagenVistaPrevia.style.display = 'block';
-        }
-
+          }
         // Se usa para enviar los datos modificados del producto al servidor.
         function guardarCambios(event) {
             event.preventDefault();
 
             const formData = new FormData();
-            formData.append('codigo', codigo);
-            formData.append('descripcion', document.getElementById('descripcionModificar').value);
-            formData.append('cantidad', document.getElementById('cantidadModificar').value);
-            formData.append('proveedor', document.getElementById('proveModificar').value);
-            formData.append('precio', document.getElementById('precioModificar').value);
+            formData.append('email', email);
+            formData.append('nombre', document.getElementById('nombre').value);
+            formData.append('apellido', document.getElementById('apellido').value);
+            formData.append('email', document.getElementById('email').value);
+            formData.append('origen', document.getElementById('origen').value);
+            formData.append('paquete', document.getElementById('paquete').value);
+            formData.append('comentario', document.getElementById('comentario').value);
 
-            // Si se ha seleccionado una imagen nueva, la añade al formData. 
-            if (imagenSeleccionada) {
-                formData.append('imagen', imagenSeleccionada, imagenSeleccionada.name);
-            }
-
-            fetch(URL + 'productos/' + codigo, {
+            fetch(URL + 'comentarios/' + email, {
                 method: 'PUT',
                 body: formData,
             })
@@ -283,46 +253,38 @@
                     if (response.ok) {
                         return response.json()
                     } else {
-                        throw new Error('Error al guardar los cambios del producto.')
+                        throw new Error('Error al guardar los cambios del comentario.')
                     }
                 })
                 .then(data => {
-                    alert('Producto actualizado correctamente.');
+                    alert('Comentario actualizado correctamente.');
                     limpiarFormulario();
                 })
                 .catch(error => {
                     console.error('Error:', error);
-                    alert('Error al actualizar el producto.');
+                    alert('Error al actualizar el comentario.');
                 });
         }
 
         // Restablece todas las variables relacionadas con el formulario a sus valores iniciales, lo que efectivamente "limpia" el formulario.
         function limpiarFormulario() {
-            document.getElementById('codigo').value = '';
-            document.getElementById('descripcionModificar').value = '';
-            document.getElementById('cantidadModificar').value = '';
-            document.getElementById('precioModificar').value = '';
-            document.getElementById('proveModificar').value = '';
-            document.getElementById('nuevaImagen').value = '';
+            document.getElementById('nombre').value = '';
+            document.getElementById('apellido').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('origen').value = '';
+            document.getElementById('paquete').value = '';
+            document.getElementById('comentario').value = '';
 
-            const imagenActual = document.getElementById('imagen-actual');
-            imagenActual.style.display = 'none';
-
-            const imagenVistaPrevia = document.getElementById('imagen-vista-previa');
-            imagenVistaPrevia.style.display = 'none';
-
-            codigo = '';
-            descripcion = '';
-            cantidad = '';
-            precio = '';
-            proveedor = '';
-            imagen_url = '';
-            imagenSeleccionada = null;
-            imagenUrlTemp = null;
+            nombre = '';
+            apellido = '';
+            email = '';
+            origen = '';
+            paquete = '';
+            comentario = '';
             mostrarDatosProducto = false;
 
-            document.getElementById('datos-producto').style.display = 'none';
+            document.getElementById('datos-comentario').style.display = 'none';
         }
     </script>
-</body>
+  </body>
 </html>

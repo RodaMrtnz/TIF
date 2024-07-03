@@ -31,7 +31,7 @@ class Contacto:
             email VARCHAR(30) NOT NULL,
             origen VARCHAR(20) NOT NULL,
             paquete VARCHAR(10) NOT NULL,
-            comentario VARCHAR(200) NOT NULL''')
+            comentario VARCHAR(200) NOT NULL)''')
         self.conn.commit()
         
         # Cerrar el cursor inicial y abrir uno nuevo con el parámetro dictionary=True
